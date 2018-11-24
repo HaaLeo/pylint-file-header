@@ -1,0 +1,8 @@
+-r requirements.txt
+
+pylint
+pylint-quotes
+# Requires those versions because of https://stackoverflow.com/a/26737258/6925187
+setuptools>=38.6.0
+twine>=1.11.0
+wheel>=0.31.0

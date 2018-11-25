@@ -2,6 +2,12 @@
     "cSpell.words": [
         "pylint",
         "Hanisch",
-        "pylintfileheader"
-    ]
+        "pylintfileheader",
+        "pylint",
+        "pylintrc",
+        "pypi",
+        "msgs",
+        "rcfile"
+    ],
+    "files.eol": "\n"
 }

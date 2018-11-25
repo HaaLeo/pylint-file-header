@@ -1,5 +1,5 @@
 # Changelog
-All notable changes to the "pylint-file-header" pypi package will be documented in this file.  
+All notable changes to the "pylintfileheader" pypi package will be documented in this file.  
 This project follows [semantic versioning](https://semver.org/).
 
 ## Unreleased - v0.0.1

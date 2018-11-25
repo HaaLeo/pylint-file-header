@@ -5,20 +5,20 @@ about: Create a report to help us improve
 ---
 
 <!-- Please fulfill the table below-->
-| VS Code Version | vscode-timing Version |
-| --------------- | --------------------- |
-|                 |                       |
+| Python Version | Pylint Version | pylintfileheader Version |
+| -------------- | -------------- | ------------------------ |
+|                |                |                          |
 
 # Description
 <!-- Please add a brief description of the error you are receiving here.-->
 
 
 ## Expected Behavior
-<!-- How should the extension act? -->
+<!-- How should the package act? -->
 
 
 ## Actual Behavior
-<!-- How is the extension actually behaving? -->
+<!-- How is the package actually behaving? -->
 
 
 # Steps to Reproduce
@@ -29,6 +29,6 @@ about: Create a report to help us improve
 
 # Settings
 <details><pre><code>
-<!-- Please add all "timing" settings of your settings.json here -->
+<!-- Please add all "pylint" settings of your .pylintrc here -->
 
 </code></pre></details>

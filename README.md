@@ -5,7 +5,7 @@
 [![Build Status](https://img.shields.io/travis/HaaLeo/pylint-file-header/master.svg?style=flat-square)](https://travis-ci.org/HaaLeo/pylint-file-header) [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat-square)](http://makeapullrequest.com)  
 [![Donate](https://img.shields.io/badge/-Donate-blue.svg?logo=paypal&style=flat-square)](https://www.paypal.me/LeoHanisch)
 
-Pylint plugin to enforce consistent file/module header
+Pylint plugin to enforce consistent file/module header.
 
 ## Installation
 

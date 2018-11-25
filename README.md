@@ -25,30 +25,30 @@ When the `file-header` setting is omitted, pylint will pass.
 
 ### Setup
 
-`.pylintrc`:  
+* **.pylintrc**:  
 
-```pylintrc
-[MASTER]
-load-plugins=pylintfileheader
+  ```pylintrc
+  [MASTER]
+  load-plugins=pylintfileheader
 
-file-header=# -----------------------------------------------\n# Copyright (c) Leo Hanisch. All rights reserved.\n# -----------------------------------------------
-```
+  file-header=# -----------------------------------------------\n# Copyright (c) Leo Hanisch. All rights reserved.\n# -----------------------------------------------
+  ```
 
-`valid_example.py`:  
+* **valid_example.py**:  
 
-```python
-# -----------------------------------------------
-# Copyright (c) Leo Hanisch. All rights reserved.
-# -----------------------------------------------
+  ```python
+  # -----------------------------------------------
+  # Copyright (c) Leo Hanisch. All rights reserved.
+  # -----------------------------------------------
+  
+  print('I am a valid example')
+  ```
 
-print('I am a valid example')
-```
+* **invalid_example.py**:  
 
-`invalid_example.py`:  
-
-```python
-print('I am an invalid example')
-```
+  ```python
+  print('I am an invalid example')
+  ```
 
 ### Evaluation
 

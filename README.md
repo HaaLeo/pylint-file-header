@@ -1,6 +1,6 @@
 # pylint-file-header
 
-[![Pypi](https://img.shields.io/pypi/v/pylintfileheader.svg?style=flat-square)](https://pypi.python.org/pypi/pylintfileheader) [![PyPI - Python Version](https://img.shields.io/pypi/pyversions/pylintfileheader.svg?style=flat-square)](https://pypi.python.org/pypi/pylintfileheader) [![Stars](https://img.shields.io/github/stars/HaaLeo/pylint-file-header.svg?label=Stars&logo=github&style=flat-square)](https://github.com/HaaLeo/pylint-file-header/stargazers)  
+[![Pypi](https://img.shields.io/pypi/v/pylintfileheader.svg?style=flat-square)](https://pypi.python.org/pypi/pylintfileheader) [![PyPI - Python Version](https://img.shields.io/pypi/pyversions/pylintfileheader.svg?style=flat-square)](https://pypi.python.org/pypi/pylintfileheader) [![PyPI - Downloads](https://img.shields.io/pypi/dm/pylintfileheader.svg?style=flat-square)](https://pypistats.org/packages/pylintfileheader) [![Stars](https://img.shields.io/github/stars/HaaLeo/pylint-file-header.svg?label=Stars&logo=github&style=flat-square)](https://github.com/HaaLeo/pylint-file-header/stargazers)  
 [![PyPI - License](https://img.shields.io/pypi/l/pylintfileheader.svg?style=flat-square)](https://pypi.python.org/pypi/pylintfileheader) 
 [![Build Status](https://img.shields.io/travis/HaaLeo/pylint-file-header/master.svg?style=flat-square)](https://travis-ci.org/HaaLeo/pylint-file-header) [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat-square)](http://makeapullrequest.com)  
 [![Donate](https://img.shields.io/badge/-Donate-blue.svg?logo=paypal&style=flat-square)](https://www.paypal.me/LeoHanisch)
@@ -31,22 +31,24 @@ When the `file-header` setting is omitted, pylint will pass.
   [MASTER]
   load-plugins=pylintfileheader
 
-  file-header=# -----------------------------------------------\n# Copyright (c) Leo Hanisch. All rights reserved.\n# -----------------------------------------------
+  file-header=# -----------\n# lorem ipsum\n# -----------
   ```
 
 * **valid_example.py**:  
 
   ```python
-  # -----------------------------------------------
-  # Copyright (c) Leo Hanisch. All rights reserved.
-  # -----------------------------------------------
-  
+  # -----------
+  # lorem ipsum
+  # -----------
+
   print('I am a valid example')
   ```
 
 * **invalid_example.py**:  
 
   ```python
+  # lorem ipsum
+
   print('I am an invalid example')
   ```
 
@@ -64,7 +66,7 @@ When the `file-header` setting is omitted, pylint will pass.
   ```
   Using config file /path/to/your/.pylintrc
   ************* Module invalid_example
-  C:  1, 0: File header should match regex "# -----------------------------------------------\n# Copyright (c) Leo Hanisch. All rights reserved.\n# -----------------------------------------------" (invalid-file-header)
+  C:  1, 0: File header should match regex "# -----------\n# lorem ipsum\n# -----------\ (invalid-file-header)
 
   -----------------------------------
   Your code has been rated at 8.57/10

@@ -1,3 +1,8 @@
+# ---------------------------------------------------------------------------------------------
+#  Copyright (c) Leo Hanisch. All rights reserved.
+#  Licensed under the MIT License. See LICENSE.txt in the project root for license information.
+# ---------------------------------------------------------------------------------------------
+
 from os import path
 
 from setuptools import find_packages, setup
@@ -8,7 +13,7 @@ with open(path.join(path.abspath(path.dirname(__file__)), 'README.md'), 'r') as 
 setup(
     # PEP8: Packages should also have short, all-lowercase names, the use of underscores is discouraged
     name='pylintfileheader',
-    version='0.0.1',
+    version='0.0.2',
     packages=find_packages(exclude=['*test']),
     description='Enables pylint to force a consistent file header.',
     long_description=LONG_DESCRIPTION,

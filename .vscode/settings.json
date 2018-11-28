@@ -9,5 +9,16 @@
         "msgs",
         "rcfile"
     ],
-    "files.eol": "\n"
+    "cSpell.ignorePaths": [
+        "**/.git/**",
+        ".vscode",
+        ".pylintrc"
+    ],
+    "files.eol": "\n",
+    "python.unitTest.pyTestArgs": [
+        "pylintfileheadertest"
+    ],
+    "python.unitTest.unittestEnabled": false,
+    "python.unitTest.nosetestsEnabled": false,
+    "python.unitTest.pyTestEnabled": true
 }

@@ -2,7 +2,7 @@
 
 [![Pypi](https://img.shields.io/pypi/v/pylintfileheader.svg?style=flat-square)](https://pypi.python.org/pypi/pylintfileheader) [![PyPI - Python Version](https://img.shields.io/pypi/pyversions/pylintfileheader.svg?style=flat-square)](https://pypi.python.org/pypi/pylintfileheader) [![PyPI - Downloads](https://img.shields.io/pypi/dm/pylintfileheader.svg?style=flat-square)](https://pypistats.org/packages/pylintfileheader) [![Stars](https://img.shields.io/github/stars/HaaLeo/pylint-file-header.svg?label=Stars&logo=github&style=flat-square)](https://github.com/HaaLeo/pylint-file-header/stargazers)  
 [![PyPI - License](https://img.shields.io/pypi/l/pylintfileheader.svg?style=flat-square)](https://pypi.python.org/pypi/pylintfileheader) 
-[![Build Status](https://img.shields.io/travis/HaaLeo/pylint-file-header/master.svg?style=flat-square)](https://travis-ci.org/HaaLeo/pylint-file-header) [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat-square)](http://makeapullrequest.com)  
+[![Build Status](https://img.shields.io/travis/HaaLeo/pylint-file-header/master.svg?style=flat-square)](https://travis-ci.org/HaaLeo/pylint-file-header) [![Codecov](https://img.shields.io/codecov/c/github/HaaLeo/pylint-file-header.svg?style=flat-square)](https://codecov.io/gh/HaaLeo/pylint-file-header) [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat-square)](http://makeapullrequest.com)  
 [![Donate](https://img.shields.io/badge/-Donate-blue.svg?logo=paypal&style=flat-square)](https://www.paypal.me/LeoHanisch)
 
 Pylint plugin to enforce consistent file/module header.

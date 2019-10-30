@@ -4,7 +4,7 @@
 # ---------------------------------------------------------------------------------------------
 
 # pylint: disable=invalid-name,unused-variable
-from unittest.mock import MagicMock
+from mock import MagicMock
 import pylint.testutils
 from pylintfileheader.file_header_checker import FileHeaderChecker
 

@@ -19,7 +19,7 @@ class FileHeaderChecker(BaseChecker):
 
     msgs = {
         'C5001': (
-            'File header should match regex "%s"',
+            'File header must match regex "%s"',
             'invalid-file-header',
             'Used when the file header does not match the '
             'regex configured in the `file-header` option.'
@@ -43,11 +43,11 @@ class FileHeaderChecker(BaseChecker):
         if self.config.file_header:
             if sys.version_info[0] < 3:
                 pattern = re.compile(
-                    '\A' + self.config.file_header, re.LOCALE | re.MULTILINE)
+                    r'\A' + self.config.file_header, re.LOCALE | re.MULTILINE)
             else:
                 # The use of re.LOCALE is discouraged in python 3
                 pattern = re.compile(
-                    '\A' + self.config.file_header, re.MULTILINE)
+                    r'\A' + self.config.file_header, re.MULTILINE)
 
             content = None
             with node.stream() as stream:

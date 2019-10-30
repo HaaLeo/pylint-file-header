@@ -1,6 +1,4 @@
 language: python
-python:
-  - "3.6"
 
 sudo: false
 
@@ -13,17 +11,39 @@ stages:
 install:
   - pip install -r requirements-dev.txt
 
+script:
+  - pylint pylintfileheader pylintfileheadertest
+  - pytest --cov pylintfileheader pylintfileheadertest
+
 jobs:
   include:
+      # Test Stage
     - stage: test
-      script:
-        - python -m pylint ./*/*.py
-        - pytest --cov pylintfileheader pylintfileheadertest
+      python: 2.7
+      script: pytest --cov pylintfileheader pylintfileheadertest # Do not lint here
+    - stage: test
+      python: 3.4
+    - stage: test
+      python: 3.5
+    - stage: test
+      python: 3.6
+    - stage: test
+      python: 3.7
+    - stage: test
+      python: 3.8
+      after_success:
+        - codecov
+
+      # Bundle Stage
     - stage: bundle
+      python: 3.8
       script:
         - cp ThirdPartyNotices.txt ./pylintfileheader
         - python setup.py sdist bdist_wheel
+
+      # Deploy Stage
     - stage: deploy
+      python: 3.8
       before_deploy:
         - cp ThirdPartyNotices.txt ./pylintfileheader
         - python setup.py sdist bdist_wheel
@@ -37,6 +57,3 @@ jobs:
         skip_cleanup: true
         on:
           tags: true
-
-after_success:
-  - codecov

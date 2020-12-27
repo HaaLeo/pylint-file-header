@@ -43,15 +43,6 @@ class TestFileHeaderChecker(pylint.testutils.CheckerTestCase):
                 args='# Valid\n# Header')):
             self.checker.process_module(node_mock)
 
-    def test_config_empty_no_message_added(self):
-        """When the `file-header` option is not set, no message should be added."""
-
-        self.checker.config.file_header = None
-        node_mock = MagicMock()
-        node_mock.stream.return_value.__enter__.return_value.read.return_value.decode.return_value = '# Invalid\n# Header'
-        with self.assertNoMessages():
-            self.checker.process_module(node_mock)
-
     def test_ignore_empty_files(self):
         """When the `file-header-ignore-empty-files` option is set to True."""
 
@@ -71,3 +62,22 @@ class TestFileHeaderChecker(pylint.testutils.CheckerTestCase):
                 line=1,
                 args='# Valid\n# Header')):
             self.checker.process_module(node_mock)
+
+
+class TestFileHeaderCheckerNoConfig(pylint.testutils.CheckerTestCase):
+    CHECKER_CLASS = FileHeaderChecker
+    CONFIG = {}
+
+    def test_no_message_added(self):
+        """When the `file-header` option is not set, no message should be added."""
+
+        self.checker.config.file_header = None
+        node_mock = MagicMock()
+        node_mock.stream.return_value.__enter__.return_value.read.return_value.decode.return_value = '# Invalid\n# Header'
+        with self.assertNoMessages():
+            self.checker.process_module(node_mock)
+
+
+class TestFileHeaderCheckerPath(TestFileHeaderChecker):
+    CHECKER_CLASS = FileHeaderChecker
+    CONFIG = {'file_header_path': 'pylintfileheadertest/header.txt'}

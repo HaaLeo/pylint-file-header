@@ -36,11 +36,27 @@ class FileHeaderChecker(BaseChecker):
                 'help': 'The file header that should be on top of a file.',
             }
         ),
+        (
+            'file-header-ignore-empty-files',
+            {
+                'default': False,
+                'type': 'yn',
+                'help': 'Ignoring the empty files.',
+            }
+        ),
     )
 
     def process_module(self, node):
         """Process the astroid node stream."""
         if self.config.file_header:
+            content = None
+            with node.stream() as stream:
+                # Explicit decoding required by python 3
+                content = stream.read().decode('utf-8')
+
+            if self.config.file_header_ignore_empty_files and not content:
+                return
+
             if sys.version_info[0] < 3:
                 pattern = re.compile(
                     r'\A' + self.config.file_header, re.LOCALE | re.MULTILINE)
@@ -48,11 +64,6 @@ class FileHeaderChecker(BaseChecker):
                 # The use of re.LOCALE is discouraged in python 3
                 pattern = re.compile(
                     r'\A' + self.config.file_header, re.MULTILINE)
-
-            content = None
-            with node.stream() as stream:
-                # Explicit decoding required by python 3
-                content = stream.read().decode('utf-8')
 
             matches = pattern.findall(content)
 

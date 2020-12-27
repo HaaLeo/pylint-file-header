@@ -17,12 +17,10 @@ script:
 
 jobs:
   include:
-      # Test Stage
+    # Test Stage
     - stage: test
       python: 2.7
       script: pytest --cov pylintfileheader pylintfileheadertest # Do not lint here
-    - stage: test
-      python: 3.4
     - stage: test
       python: 3.5
     - stage: test

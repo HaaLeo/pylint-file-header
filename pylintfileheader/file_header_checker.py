@@ -41,6 +41,7 @@ class FileHeaderChecker(BaseChecker):
             {
                 'default': False,
                 'type': 'yn',
+                'metavar': 'y_or_n',
                 'help': 'Ignoring the empty files.',
             }
         ),

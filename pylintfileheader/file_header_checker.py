@@ -57,6 +57,7 @@ class FileHeaderChecker(BaseChecker):
     )
 
     def __init__(self, linter=None):
+        # pylint: disable=super-with-arguments
         super(FileHeaderChecker, self).__init__(linter=linter)
         self.pattern = None
         self.header = None
@@ -64,8 +65,8 @@ class FileHeaderChecker(BaseChecker):
     def open(self):
         self.header = self.config.file_header
         if not self.header and self.config.file_header_path:
-            with open(self.config.file_header_path, 'r') as f:
-                self.header = f.read()
+            with open(self.config.file_header_path, 'r') as header_file:
+                self.header = header_file.read()
 
         if self.header:
             if sys.version_info[0] < 3:

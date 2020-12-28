@@ -51,3 +51,23 @@ class TestFileHeaderChecker(pylint.testutils.CheckerTestCase):
         node_mock.stream.return_value.__enter__.return_value.read.return_value.decode.return_value = '# Invalid\n# Header'
         with self.assertNoMessages():
             self.checker.process_module(node_mock)
+
+    def test_ignore_empty_files(self):
+        """When the `file-header-ignore-empty-files` option is set to True."""
+
+        self.checker.config.file_header_ignore_empty_files = True
+        node_mock = MagicMock()
+        node_mock.stream.return_value.__enter__.return_value.read.return_value.decode.return_value = ''
+        with self.assertNoMessages():
+            self.checker.process_module(node_mock)
+
+    def test_do_not_ignore_empty_files(self):
+        """When the `file-header-ignore-empty-files` option is set to False (default value)."""
+
+        node_mock = MagicMock()
+        node_mock.stream.return_value.__enter__.return_value.read.return_value.decode.return_value = ''
+        with self.assertAddsMessages(pylint.testutils.Message(
+                msg_id='invalid-file-header',
+                line=1,
+                args='# Valid\n# Header')):
+            self.checker.process_module(node_mock)

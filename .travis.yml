@@ -31,19 +31,21 @@ jobs:
       python: 3.7
     - stage: test
       python: 3.8
+    - stage: test
+      python: 3.9
       after_success:
         - codecov
 
       # Bundle Stage
     - stage: bundle
-      python: 3.8
+      python: 3.9
       script:
         - cp ThirdPartyNotices.txt ./pylintfileheader
         - python setup.py sdist bdist_wheel
 
       # Deploy Stage
     - stage: deploy
-      python: 3.8
+      python: 3.9
       before_deploy:
         - cp ThirdPartyNotices.txt ./pylintfileheader
         - python setup.py sdist bdist_wheel

@@ -62,7 +62,8 @@ disable=duplicate-code, # pylint-file-header: Fails in unit tests
         missing-docstring, # pylint-file-header: Add DOCSTRINGS only where helpful
         relative-import, # pylint-file-header: ignore for unit tests
         redefined-outer-name, # pylint-file-header: conflicts with pytest fixtures
-        too-few-public-methods # pylint-file-header: know what you are doing
+        too-few-public-methods, # pylint-file-header: know what you are doing
+        bad-option-value # pylint-file-header: conflict with super-with-arguments in py34
 
 # Enable the message, report, category or checker with the given id(s). You can
 # either give multiple identifier separated by comma (,) or put this option

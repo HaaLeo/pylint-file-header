@@ -20,7 +20,13 @@ Generate a `.pylintrc` file by executing `pylint --generate-rcfile`.
 Then add `pylintfileheader` to the plugins to load and set the `file-header` option to the [regular expression](https://docs.python.org/3/library/re.html#regular-expression-syntax) that the file header should match.  
 When the `file-header` setting is omitted, pylint will pass.
 
+### Options
+
+* `file-header` is a regexp representing the file header that should be on top of a file.
+* `file-header-path` is the path to the file that contains the header. This is useful in case of long, multi-line headers, such as copyrights.
 * `file-header-ignore-empty-files` turns on the mode of ignoring the empty files, like `__init__.py`. The default value is `False`.
+
+If both options `file-header` and `file-header-path` are set, then `file-header` will be used and the `file-header-path` is ignored.
 
 ## Example
 

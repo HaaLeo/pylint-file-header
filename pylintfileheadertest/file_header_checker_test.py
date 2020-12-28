@@ -4,8 +4,13 @@
 # ---------------------------------------------------------------------------------------------
 
 # pylint: disable=invalid-name,unused-variable
+import re
+import sys
+
 from mock import MagicMock
 import pylint.testutils
+import pytest
+
 from pylintfileheader.file_header_checker import FileHeaderChecker
 
 
@@ -43,15 +48,6 @@ class TestFileHeaderChecker(pylint.testutils.CheckerTestCase):
                 args='# Valid\n# Header')):
             self.checker.process_module(node_mock)
 
-    def test_config_empty_no_message_added(self):
-        """When the `file-header` option is not set, no message should be added."""
-
-        self.checker.config.file_header = None
-        node_mock = MagicMock()
-        node_mock.stream.return_value.__enter__.return_value.read.return_value.decode.return_value = '# Invalid\n# Header'
-        with self.assertNoMessages():
-            self.checker.process_module(node_mock)
-
     def test_ignore_empty_files(self):
         """When the `file-header-ignore-empty-files` option is set to True."""
 
@@ -71,3 +67,58 @@ class TestFileHeaderChecker(pylint.testutils.CheckerTestCase):
                 line=1,
                 args='# Valid\n# Header')):
             self.checker.process_module(node_mock)
+
+
+class TestFileHeaderCheckerNoConfig(pylint.testutils.CheckerTestCase):
+    CHECKER_CLASS = FileHeaderChecker
+    CONFIG = {}
+
+    def test_no_message_added(self):
+        """When the `file-header` option is not set, no message should be added."""
+
+        node_mock = MagicMock()
+        node_mock.stream.return_value.__enter__.return_value.read.return_value.decode.return_value = '# Invalid\n# Header'
+        with self.assertNoMessages():
+            self.checker.process_module(node_mock)
+
+
+class TestFileHeaderCheckerPathMain(TestFileHeaderChecker):
+    CHECKER_CLASS = FileHeaderChecker
+    CONFIG = {'file_header_path': 'pylintfileheadertest/header.txt'}
+
+
+class TestFileHeaderCheckerPathExtra:
+    CHECKER_CLASS = FileHeaderChecker
+
+    def get_checker(self, config):
+        linter = pylint.testutils.UnittestLinter()
+        checker = self.CHECKER_CLASS(linter)
+        for key, value in config.items():
+            setattr(checker.config, key, value)
+        return checker
+
+    def test_incorrect_regex(self):
+        with pytest.raises(re.error):
+            self.get_checker({
+                'file_header': '.+)',
+            }).open()
+
+    def test_wrong_path(self):
+        if sys.version_info[0] < 3:
+            excp = IOError
+        else:
+            excp = FileNotFoundError
+
+        with pytest.raises(excp):
+            self.get_checker({
+                'file_header_path': 'foo-bar.txt',
+            }).open()
+
+    def test_both_options(self):
+        # no error expected since the file_header is used
+        checker = self.get_checker({
+            'file_header': '# Valid\n# Header',
+            'file_header_path': 'foo-bar.txt',
+        })
+        checker.open()
+        assert checker.header == '# Valid\n# Header'

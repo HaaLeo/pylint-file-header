@@ -26,6 +26,8 @@ When the `file-header` setting is omitted, pylint will pass.
 * `file-header-path` is the path to the file that contains the header. This is useful in case of long, multi-line headers, such as copyrights.
 * `file-header-ignore-empty-files` turns on the mode of ignoring the empty files, like `__init__.py`. The default value is `False`.
 
+If both options `file-header` and `file-header-path` are set, then `file-header` will be used and the `file-header-path` is ignored.
+
 ## Example
 
 ### Setup

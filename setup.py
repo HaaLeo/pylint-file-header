@@ -18,14 +18,15 @@ setup(
     description='Enables pylint to force a consistent file header.',
     long_description=LONG_DESCRIPTION,
     long_description_content_type='text/markdown',
-    url='https://github.com/HaaLeo/pylint-file-header',
     author='Leo Hanisch',
     license='MIT',
     package_data={'pylintfileheader': ['ThirdPartyNotices.txt']},
     install_requires=[],
     project_urls={
+        'Source': 'https://github.com/HaaLeo/pylint-file-header',
         'Issue Tracker': 'https://github.com/HaaLeo/pylint-file-header/issues',
-        'Changelog': 'https://github.com/HaaLeo/pylint-file-header/blob/master/CHANGELOG.md'
+        'Changelog': 'https://github.com/HaaLeo/pylint-file-header/blob/master/CHANGELOG.md#changelog',
+        'Funding': 'https://github.com/sponsors/HaaLeo'
     },
     python_requires='>=2.7',
     keywords=[

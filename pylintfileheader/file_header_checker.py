@@ -65,7 +65,7 @@ class FileHeaderChecker(BaseChecker):
     def open(self):
         self.header = self.config.file_header
         if not self.header and self.config.file_header_path:
-            with open(self.config.file_header_path, 'r') as header_file:
+            with open(self.config.file_header_path, 'r', encoding='utf-8') as header_file:
                 self.header = header_file.read()
 
         if self.header:

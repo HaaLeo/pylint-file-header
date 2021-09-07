@@ -2,7 +2,7 @@
 #  Copyright (c) Leo Hanisch. All rights reserved.
 #  Licensed under the MIT License. See LICENSE.txt in the project root for license information.
 # ---------------------------------------------------------------------------------------------
-
+import os
 import re
 import sys
 
@@ -84,7 +84,7 @@ class FileHeaderChecker(BaseChecker):
         content = None
         with node.stream() as stream:
             # Explicit decoding required by python 3
-            content = stream.read().decode('utf-8')
+            content = stream.read().decode('utf-8').replace(os.linesep, '\n')
 
         if self.config.file_header_ignore_empty_files and not content:
             return

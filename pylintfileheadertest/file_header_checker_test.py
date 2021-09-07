@@ -4,6 +4,7 @@
 # ---------------------------------------------------------------------------------------------
 
 # pylint: disable=invalid-name,unused-variable
+import os
 import re
 import sys
 
@@ -66,6 +67,18 @@ class TestFileHeaderChecker(pylint.testutils.CheckerTestCase):
                 msg_id='invalid-file-header',
                 line=1,
                 args='# Valid\n# Header')):
+            self.checker.process_module(node_mock)
+
+    def test_valid_header_in_windows_format_file(self, monkeypatch):
+        """Test whether no message is added when the source file is in windows newline format."""
+
+        windows_linesep = '\r\n'
+        monkeypatch.setattr(os, 'linesep', windows_linesep)
+        node_mock = MagicMock()
+        node_mock.stream.return_value.__enter__.return_value.read.return_value.decode.return_value = (
+            '# Valid{newline}# Header{newline}print(42)'.format(newline=windows_linesep)
+        )
+        with self.assertNoMessages():
             self.checker.process_module(node_mock)
 
 

@@ -100,6 +100,11 @@ class TestFileHeaderCheckerPathMain(TestFileHeaderChecker):
     CONFIG = {'file_header_path': 'pylintfileheadertest/header.txt'}
 
 
+class TestFileHeaderCheckerWindowsFormat(TestFileHeaderChecker):
+    CHECKER_CLASS = FileHeaderChecker
+    CONFIG = {'file_header_path': 'pylintfileheadertest/windows_header.txt'}
+
+
 class TestFileHeaderCheckerPathExtra:
     CHECKER_CLASS = FileHeaderChecker
 

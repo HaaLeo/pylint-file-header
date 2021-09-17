@@ -6,6 +6,10 @@ This project follows [semantic versioning](https://semver.org/).
 
 [All Changes](https://github.com/HaaLeo/pylint-file-header/compare/v0.3.0...master)
 
+## 2021-09-17 - [v0.3.1]
+### Fixed
+* how the file header and files are read. Now windows' CRLF line breaks are supported. Thx to Piotr Kasprzyk ([@pkasprzyk](https://github.com/pkasprzyk)).
+
 ## 2020-12-28 - [v0.3.0](https://github.com/HaaLeo/pylint-file-header/tree/v0.3.0)
 
 ### Added

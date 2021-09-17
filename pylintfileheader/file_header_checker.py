@@ -2,7 +2,6 @@
 #  Copyright (c) Leo Hanisch. All rights reserved.
 #  Licensed under the MIT License. See LICENSE.txt in the project root for license information.
 # ---------------------------------------------------------------------------------------------
-
 import re
 import sys
 
@@ -65,8 +64,8 @@ class FileHeaderChecker(BaseChecker):
     def open(self):
         self.header = self.config.file_header
         if not self.header and self.config.file_header_path:
-            with open(self.config.file_header_path, 'r') as header_file:
-                self.header = header_file.read()
+            with open(self.config.file_header_path, 'rb') as header_file:
+                self.header = header_file.read().decode('utf-8')
 
         if self.header:
             if sys.version_info[0] < 3:

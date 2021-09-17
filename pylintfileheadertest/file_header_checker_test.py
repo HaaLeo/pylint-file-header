@@ -16,13 +16,14 @@ from pylintfileheader.file_header_checker import FileHeaderChecker
 
 class TestFileHeaderChecker(pylint.testutils.CheckerTestCase):
     CHECKER_CLASS = FileHeaderChecker
-    CONFIG = {'file_header': '# Valid\n# Header'}
+    EXPECTED_HEADER = '# Valid\n# Header'
+    CONFIG = {'file_header': EXPECTED_HEADER}
 
     def test_valid_header_no_message_added(self):
         """Test whether no message is added, when the file header is valid."""
 
         node_mock = MagicMock()
-        node_mock.stream.return_value.__enter__.return_value.read.return_value.decode.return_value = '# Valid\n# Header'
+        node_mock.stream.return_value.__enter__.return_value.read.return_value.decode.return_value = self.EXPECTED_HEADER
         with self.assertNoMessages():
             self.checker.process_module(node_mock)
 
@@ -34,7 +35,7 @@ class TestFileHeaderChecker(pylint.testutils.CheckerTestCase):
         with self.assertAddsMessages(pylint.testutils.Message(
                 msg_id='invalid-file-header',
                 line=1,
-                args='# Valid\n# Header')):
+                args=self.EXPECTED_HEADER)):
             self.checker.process_module(node_mock)
 
     def test_valid_header_not_at_top_message_added(self):
@@ -45,7 +46,7 @@ class TestFileHeaderChecker(pylint.testutils.CheckerTestCase):
         with self.assertAddsMessages(pylint.testutils.Message(
                 msg_id='invalid-file-header',
                 line=1,
-                args='# Valid\n# Header')):
+                args=self.EXPECTED_HEADER)):
             self.checker.process_module(node_mock)
 
     def test_ignore_empty_files(self):
@@ -65,7 +66,7 @@ class TestFileHeaderChecker(pylint.testutils.CheckerTestCase):
         with self.assertAddsMessages(pylint.testutils.Message(
                 msg_id='invalid-file-header',
                 line=1,
-                args='# Valid\n# Header')):
+                args=self.EXPECTED_HEADER)):
             self.checker.process_module(node_mock)
 
 
@@ -85,6 +86,12 @@ class TestFileHeaderCheckerNoConfig(pylint.testutils.CheckerTestCase):
 class TestFileHeaderCheckerPathMain(TestFileHeaderChecker):
     CHECKER_CLASS = FileHeaderChecker
     CONFIG = {'file_header_path': 'pylintfileheadertest/header.txt'}
+
+
+class TestFileHeaderCheckerPathWindows(TestFileHeaderChecker):
+    CHECKER_CLASS = FileHeaderChecker
+    EXPECTED_HEADER = '# Valid\r\n# Header'
+    CONFIG = {'file_header_path': 'pylintfileheadertest/windows_header.txt'}
 
 
 class TestFileHeaderCheckerPathExtra:

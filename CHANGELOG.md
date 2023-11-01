@@ -9,6 +9,7 @@ This project follows [semantic versioning](https://semver.org/).
 ## 2023-11-01 - [v1.0.0]
 ### BREAKING CHANGES
 * Require pylint>=3.0,<4.0
+* Require python>=3.8
 
 [All Changes](https://github.com/HaaLeo/pylint-file-header/compare/v0.3.3...v1.0.0)
 

@@ -13,7 +13,7 @@ with open(path.join(path.abspath(path.dirname(__file__)), 'README.md'), 'r') as 
 setup(
     # PEP8: Packages should also have short, all-lowercase names, the use of underscores is discouraged
     name='pylintfileheader',
-    version='0.3.3',
+    version='1.0.0',
     packages=find_packages(exclude=['*test']),
     description='Enables pylint to force a consistent file header.',
     long_description=LONG_DESCRIPTION,
@@ -21,7 +21,7 @@ setup(
     author='Leo Hanisch',
     license='MIT',
     package_data={'pylintfileheader': ['ThirdPartyNotices.txt']},
-    install_requires=['pylint<3.0'],
+    install_requires=['pylint>=3.0,<4.0'],
     project_urls={
         'Source': 'https://github.com/HaaLeo/pylint-file-header',
         'Issue Tracker': 'https://github.com/HaaLeo/pylint-file-header/issues',

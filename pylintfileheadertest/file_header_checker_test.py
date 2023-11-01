@@ -32,7 +32,7 @@ class TestFileHeaderChecker(pylint.testutils.CheckerTestCase):
 
         node_mock = MagicMock()
         node_mock.stream.return_value.__enter__.return_value.read.return_value.decode.return_value = '# Invalid\n# Header'
-        with self.assertAddsMessages(pylint.testutils.Message(
+        with self.assertAddsMessages(pylint.testutils.MessageTest(
                 msg_id='invalid-file-header',
                 line=1,
                 args=self.EXPECTED_HEADER)):
@@ -43,7 +43,7 @@ class TestFileHeaderChecker(pylint.testutils.CheckerTestCase):
 
         node_mock = MagicMock()
         node_mock.stream.return_value.__enter__.return_value.read.return_value.decode.return_value = 'print(\'hello\')\n# Valid\n# Header'
-        with self.assertAddsMessages(pylint.testutils.Message(
+        with self.assertAddsMessages(pylint.testutils.MessageTest(
                 msg_id='invalid-file-header',
                 line=1,
                 args=self.EXPECTED_HEADER)):
@@ -52,7 +52,7 @@ class TestFileHeaderChecker(pylint.testutils.CheckerTestCase):
     def test_ignore_empty_files(self):
         """When the `file-header-ignore-empty-files` option is set to True."""
 
-        self.checker.config.file_header_ignore_empty_files = True
+        self.checker.linter.config.file_header_ignore_empty_files = True
         node_mock = MagicMock()
         node_mock.stream.return_value.__enter__.return_value.read.return_value.decode.return_value = ''
         with self.assertNoMessages():
@@ -63,7 +63,7 @@ class TestFileHeaderChecker(pylint.testutils.CheckerTestCase):
 
         node_mock = MagicMock()
         node_mock.stream.return_value.__enter__.return_value.read.return_value.decode.return_value = ''
-        with self.assertAddsMessages(pylint.testutils.Message(
+        with self.assertAddsMessages(pylint.testutils.MessageTest(
                 msg_id='invalid-file-header',
                 line=1,
                 args=self.EXPECTED_HEADER)):
@@ -101,7 +101,7 @@ class TestFileHeaderCheckerPathExtra:
         linter = pylint.testutils.UnittestLinter()
         checker = self.CHECKER_CLASS(linter)
         for key, value in config.items():
-            setattr(checker.config, key, value)
+            setattr(checker.linter.config, key, value)
         return checker
 
     def test_incorrect_regex(self):

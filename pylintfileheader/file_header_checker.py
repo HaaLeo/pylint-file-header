@@ -5,14 +5,12 @@
 import re
 import sys
 
-from pylint.checkers import BaseChecker
-from pylint.interfaces import IRawChecker
+from pylint.checkers import BaseRawFileChecker
 
 # pylint: disable=anomalous-backslash-in-string
 
 
-class FileHeaderChecker(BaseChecker):
-    __implements__ = IRawChecker
+class FileHeaderChecker(BaseRawFileChecker):
 
     name = 'pylintfileheader'
 
@@ -62,9 +60,9 @@ class FileHeaderChecker(BaseChecker):
         self.header = None
 
     def open(self):
-        self.header = self.config.file_header
-        if not self.header and self.config.file_header_path:
-            with open(self.config.file_header_path, 'rb') as header_file:
+        self.header = self.linter.config.file_header
+        if not self.header and self.linter.config.file_header_path:
+            with open(self.linter.config.file_header_path, 'rb') as header_file:
                 self.header = header_file.read().decode('utf-8')
 
         if self.header:
@@ -85,7 +83,7 @@ class FileHeaderChecker(BaseChecker):
             # Explicit decoding required by python 3
             content = stream.read().decode('utf-8')
 
-        if self.config.file_header_ignore_empty_files and not content:
+        if self.linter.config.file_header_ignore_empty_files and not content:
             return
 
         matches = self.pattern.findall(content)

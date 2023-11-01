@@ -22,7 +22,8 @@ jobs=1
 
 # List of plugins (as comma separated values of python modules names) to load,
 # usually to register additional checkers.
-load-plugins=pylint_quotes,pylintfileheader
+# load-plugins=pylintfileheader
+# disable pylint_quotes until https://github.com/edaniszewski/pylint-quotes/issues/29 is fixed
 
 # Option for the pylintfileheader plugin
 file-header=# ---------------------------------------------------------------------------------------------\n#  Copyright \(c\) Leo Hanisch. All rights reserved.\n#  Licensed under the MIT License. See LICENSE.txt in the project root for license information.\n# ---------------------------------------------------------------------------------------------\n

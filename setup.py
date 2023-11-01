@@ -21,7 +21,7 @@ setup(
     author='Leo Hanisch',
     license='MIT',
     package_data={'pylintfileheader': ['ThirdPartyNotices.txt']},
-    install_requires=[],
+    install_requires=['pylint<3.0'],
     project_urls={
         'Source': 'https://github.com/HaaLeo/pylint-file-header',
         'Issue Tracker': 'https://github.com/HaaLeo/pylint-file-header/issues',
@@ -47,6 +47,8 @@ setup(
         'Programming Language :: Python :: 3.6',
         'Programming Language :: Python :: 3.7',
         'Programming Language :: Python :: 3.8',
-        'Programming Language :: Python :: 3.9'
+        'Programming Language :: Python :: 3.9',
+        'Programming Language :: Python :: 3.10',
+        'Programming Language :: Python :: 3.11'
     ]
 )

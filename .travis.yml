@@ -33,23 +33,27 @@ jobs:
       python: 3.8
     - stage: test
       python: 3.9
+    - stage: test
+      python: 3.10
+    - stage: test
+      python: 3.11
       after_success:
         - codecov
 
       # Bundle Stage
     - stage: bundle
-      python: 3.9
+      python: 3.11
       script:
         - cp ThirdPartyNotices.txt ./pylintfileheader
-        - python setup.py sdist bdist_wheel
+        - python -m build --sdist --wheel
 
       # Deploy Stage
     - stage: deploy
       python: 3.9
       before_deploy:
         - cp ThirdPartyNotices.txt ./pylintfileheader
-        - python setup.py sdist bdist_wheel
-        - twine upload dist/* -u HaaLeo -p ${PYPI_PASSWORD}
+        - python -m build --sdist --wheel
+        - twine upload dist/* -u __token__ -p ${PYPI_TOKEN}
       script: skip
       deploy:
         provider: releases

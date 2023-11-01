@@ -4,7 +4,13 @@ This project follows [semantic versioning](https://semver.org/).
 
 ## Unreleased
 
-[All Changes](https://github.com/HaaLeo/pylint-file-header/compare/v0.3.0...master)
+[All Changes](https://github.com/HaaLeo/pylint-file-header/compare/v0.3.3...master)
+
+## 2023-11-01 - [v0.3.3]
+### Fixed
+* Require installation of pylint<3.0
+
+[All Changes](https://github.com/HaaLeo/pylint-file-header/compare/v0.3.2...v0.3.3)
 
 ## 2021-09-17 - [v0.3.2]
 ### Fixed

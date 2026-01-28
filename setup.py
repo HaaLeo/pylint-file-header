@@ -21,7 +21,7 @@ setup(
     author='Leo Hanisch',
     license='MIT',
     package_data={'pylintfileheader': ['ThirdPartyNotices.txt']},
-    install_requires=['pylint>=3.0,<4.0'],
+    install_requires=['pylint>=3.0,<5.0'],
     project_urls={
         'Source': 'https://github.com/HaaLeo/pylint-file-header',
         'Issue Tracker': 'https://github.com/HaaLeo/pylint-file-header/issues',

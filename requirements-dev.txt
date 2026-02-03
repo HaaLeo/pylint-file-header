@@ -2,7 +2,7 @@
 
 codecov
 mock
-pylint>=3.0,<4.0
+pylint>=3.0,<5.0
 pylint-quotes
 pylintfileheader>=1.0.0
 pytest

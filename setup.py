@@ -13,7 +13,7 @@ with open(path.join(path.abspath(path.dirname(__file__)), 'README.md'), 'r') as 
 setup(
     # PEP8: Packages should also have short, all-lowercase names, the use of underscores is discouraged
     name='pylintfileheader',
-    version='1.0.0',
+    version='1.1.0',
     packages=find_packages(exclude=['*test']),
     description='Enables pylint to force a consistent file header.',
     long_description=LONG_DESCRIPTION,

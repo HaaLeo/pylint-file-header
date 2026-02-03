@@ -29,22 +29,26 @@ jobs:
       python: 3.11
     - stage: test
       python: 3.12
+    - stage: test
+      python: 3.13
+    - stage: test
+      python: 3.14
       after_success:
         - codecov
 
       # Bundle Stage
     - stage: bundle
-      python: 3.12
+      python: 3.14
       script:
         - cp ThirdPartyNotices.txt ./pylintfileheader
         - python -m build --sdist --wheel
 
       # Deploy Stage
     - stage: deploy
-      python: 3.12
+      python: 3.14
       before_deploy:
         - cp ThirdPartyNotices.txt ./pylintfileheader
-        - python -m build --sdist --wheel
+        - python -m build --sdist --wheel --no-isolation
         - twine upload dist/* -u __token__ -p ${PYPI_TOKEN}
       script: skip
       deploy:

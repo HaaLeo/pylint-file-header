@@ -8,7 +8,7 @@ pylintfileheader>=1.0.0
 pytest
 pytest-cov
 # Requires those versions because of https://stackoverflow.com/a/26737258/6925187
-setuptools==76.1.0
+setuptools==78.1.1
 twine>=1.11.0
 wheel==0.46.3
 build
